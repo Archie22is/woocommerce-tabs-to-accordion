@@ -9,7 +9,7 @@
  *
  * Text Domain: wctta
  *
- * @author dtwebuk
+ * @author wpvillain
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
