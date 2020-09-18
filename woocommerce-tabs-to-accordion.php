@@ -16,10 +16,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * WooCommerce Tabs to Accordion class
+ * 
+ * Class to convert WooCommerce Tabs to accordions on smaller screen sizes
+ * starting at breakpoint set
+ */
 class WooCommerceTabsToAccordion
 {
 	public function __construct()
 	{
+		// Add new section to WooCommerce > Settings > Products
 		add_filter( 'woocommerce_get_sections_products', array($this, 'add_settings_section') );
 		add_filter( 'woocommerce_get_settings_products', array($this, 'register_plugin_settings'), 10, 2 );
 
@@ -29,12 +36,24 @@ class WooCommerceTabsToAccordion
 		add_action( 'woocommerce_after_single_product_summary', array($this, 'custom_tab_template'), 30 );
 	}
 
+	/**
+	 * Add Settings Sectin function
+	 *
+	 * @param [type] $sections
+	 * @return void
+	 */
 	public function add_settings_section( $sections )
 	{
 		$sections['wctta'] = __('WC Tabs to Accordion', 'wctta');
 		return $sections;
 	}
-
+	/**
+	 * Register Plugin Settings function
+	 *
+	 * @param [type] $settings
+	 * @param [type] $current_section
+	 * @return void
+	 */
 	public function register_plugin_settings( $settings, $current_section )
 	{
 		if ( $current_section == 'wctta' ) {
@@ -73,6 +92,11 @@ class WooCommerceTabsToAccordion
 		}
 	}
 
+	/**
+	 * Script and Styles Registraton function
+	 *
+	 * @return void
+	 */
 	public function register_scripts_and_styles()
 	{
 		wp_register_style('woocommerce-tabs-to-accordion-css', plugins_url('/css/woocommerce-tabs-to-accordion.css', __FILE__));
@@ -81,6 +105,11 @@ class WooCommerceTabsToAccordion
 		wp_enqueue_script('easy-responsive-tabs-js');
 	}
 
+	/**
+	 * Remove Default WooCommerce Tabs function
+	 *
+	 * @return void
+	 */
 	public function remove_default_wc_tabs_action()
 	{
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
