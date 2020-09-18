@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WooCommerce Tabs to Accordion
- * Plugin URI: https://dtweb.uk/
+ * Plugin URI: https://wpvilla.in
  * Description: Changes the default WooCommerce tabs to an Accordion when on mobile devices
- * Version: 1.0.0
- * Author: Dan Tomlinson
- * Author URI: https://dtweb.uk
+ * Version: 1.0.1
+ * Author: Jasper Frumau
+ * Author URI: https://wpvilla.in
  *
  * Text Domain: wctta
  *
